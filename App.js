@@ -9,6 +9,7 @@ import {
   Oswald_400Regular,
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
+// to use google fonts we need to install to our app, see site for command to install https://docs.expo.dev/develop/user-interface/fonts/
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
