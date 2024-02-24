@@ -10,6 +10,8 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { SafeArea } from "./src/components/utility/safe-area.component";
 
+import { restaurantsRequest } from "./src/services/restaurants/restaurants.service";
+
 import {
   useFonts as useOswald,
   Oswald_400Regular,
@@ -49,6 +51,7 @@ const TAB_ICON = {
   Restaurants: "restaurant",
   Map: "map",
   Settings: "settings",
+  // key is name of route | value is icon name reference
 };
 
 const createScreenOptions = ({ route }) => {
