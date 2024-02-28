@@ -20,17 +20,16 @@ const RestaurantListContainer = styled.View`
 `;
 
 export const RestaurantsScreen = () => {
-  const restaurantContext = useContext(RestaurantsContext);
+  const { restaurants, isLoading, error } = useContext(RestaurantsContext);
   return (
     <SafeArea>
       <SearchContainer>
         <Searchbar />
       </SearchContainer>
       <FlatList
-        data={restaurantContext.restaurants}
-        renderItem={() => <RestaurantInfoCard />}
+        data={restaurants}
+        renderItem={({ item }) => <RestaurantInfoCard restaurant={item} />}
         keyExtractor={(item) => item.name}
-        // contentContainerStyle={{ padding: 16 }}
       />
     </SafeArea>
   );
