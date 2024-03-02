@@ -10,7 +10,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { SafeArea } from "./src/components/utility/safe-area.component";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
-import { LocationContextProvider } from "./src/services/location/location.context";
+import { LocationProvider } from "./src/services/location/location.context";
 
 import {
   useFonts as useOswald,
@@ -27,13 +27,15 @@ import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 //   );
 // } <<<<<<<<< another way of writing a function component
 
-const MapScreen = () => (
-  <SafeArea>
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Map!</Text>
-    </View>
-  </SafeArea>
-);
+const MapScreen = () => {
+  return (
+    <SafeArea>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text>Map!</Text>
+      </View>
+    </SafeArea>
+  );
+};
 
 function SettingsScreen() {
   return (
@@ -78,14 +80,14 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <LocationContextProvider>
+        <LocationProvider>
           <RestaurantsContextProvider>
             <NavigationContainer>
               <Tab.Navigator
                 screenOptions={createScreenOptions}
                 tabBarOptions={{
                   activeTintColor: "tomato",
-                  inacticeTintColor: "gray",
+                  inactiveTintColor: "gray",
                 }}
               >
                 <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
@@ -94,7 +96,7 @@ export default function App() {
               </Tab.Navigator>
             </NavigationContainer>
           </RestaurantsContextProvider>
-        </LocationContextProvider>
+        </LocationProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
