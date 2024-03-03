@@ -12,6 +12,10 @@ export const LocationProvider = ({ children }) => {
   const onSearch = (searchKeyword = "Antwerp") => {
     setIsLoading(true);
     setKeyword(searchKeyword);
+    if (!searchKeyword.length) {
+      console.log("no keyword, blank request");
+      return;
+    }
     console.log("Searching for:", searchKeyword);
     locationRequest(searchKeyword.toLowerCase())
       .then((result) => {
@@ -21,6 +25,7 @@ export const LocationProvider = ({ children }) => {
       .then((transformedResult) => {
         setIsLoading(false);
         setLocation(transformedResult);
+        console.log(transformedResult);
       })
       .catch((err) => {
         setIsLoading(false);
