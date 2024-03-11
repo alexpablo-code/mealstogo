@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import styled from "styled-components/native";
 import { FlatList } from "react-native";
@@ -28,6 +28,12 @@ const LoadingContainer = styled.View`
 
 export const RestaurantsScreen = () => {
   const { restaurants, isLoading, error } = useContext(RestaurantsContext);
+  console.log("restaurants in rest screen", restaurants);
+
+  useEffect(() => {
+    console.log("EFFECT restaurants in rest screen", restaurants);
+  }, [restaurants]);
+
   return (
     <SafeArea>
       <Search />
